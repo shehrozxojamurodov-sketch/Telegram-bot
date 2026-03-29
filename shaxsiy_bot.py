@@ -46,7 +46,7 @@ def start(message):
     btn9 = types.InlineKeyboardButton("📝 Word → PDF", callback_data="word2pdf")
     btn10 = types.InlineKeyboardButton("🧠 Psixologik ko‘mak", callback_data="psychology")
     markup.add(btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn10)
-    bot.send_message(message.chat.id, "🔽 Xizmatlar menyusi: 🔽", reply_markup=markup)
+    bot.send_message(message.chat.id, "Barcha xizmatlar:", reply_markup=markup)
 
 # ========== Tugmalarni boshqarish ==========
 @bot.callback_query_handler(func=lambda call: True)
