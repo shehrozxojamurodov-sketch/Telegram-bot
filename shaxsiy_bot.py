@@ -5,7 +5,7 @@ from threading import Thread
 from telebot import types
 
 # Tokenni muhit oʻzgaruvchisidan olish
-TOKEN = "8730458805:AAGufW-Oxhrs_gFoyFDsMyJ5varyv-mIX9k"   
+TOKEN = "BOT_TOKEN"   
 bot = telebot.TeleBot(TOKEN)
 
 # /start buyrug‘i – menyuni ko‘rsatish
