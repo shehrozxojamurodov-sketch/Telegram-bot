@@ -15,19 +15,25 @@ openai.api_key = OPENAI_API_KEY
 bot = telebot.TeleBot(TOKEN)
 
 # ========== AI yordamchisi ==========
+from openai import OpenAI
+
+# Client ni bir marta yarating (bot boshlanganda)
+client = OpenAI(api_key=os.environ.get('OPENAI_API_KEY'))
+
 def ask_ai(prompt):
-    """OpenAI API orqali so‘rov yuboradi va javobni qaytaradi"""
     try:
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",  # yoki "gpt-4" agar mavjud bo‘lsa
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo",
             messages=[
-                {"role": "system", "content": "Siz ilmiy yordamchi bot. Foydalanuvchiga ilmiy maqola, taqdimot, referat va boshqa akademik ishlarda yordam berasiz."},
+                {"role": "system", "content": "Siz yordamchi bot. Foydalanuvchiga ilmiy ishlar, taqdimot, referat va boshqa mavzularda yordam berasiz."},
                 {"role": "user", "content": prompt}
             ],
             max_tokens=1500,
             temperature=0.7
         )
         return response.choices[0].message.content
+    except Exception as e:
+        return f"Xatolik: {str(e)}"
     except Exception as e:
         return f"Xatolik yuz berdi: {str(e)}"
 
