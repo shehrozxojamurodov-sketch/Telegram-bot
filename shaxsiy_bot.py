@@ -18,6 +18,9 @@ bot = telebot.TeleBot(TOKEN)
 from openai import OpenAI
 
 # Client ni bir marta yarating (bot boshlanganda)
+from openai import OpenAI
+
+# Client ni bir marta yarating (bot boshlanganda)
 client = OpenAI(api_key=os.environ.get('OPENAI_API_KEY'))
 
 def ask_ai(prompt):
@@ -32,6 +35,8 @@ def ask_ai(prompt):
             temperature=0.7
         )
         return response.choices[0].message.content
+    except Exception as e:
+        return f"Xatolik: {str(e)}"
     except Exception as e:
         return f"Xatolik: {str(e)}"
     except Exception as e:
